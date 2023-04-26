@@ -1,0 +1,65 @@
+{
+  "name": "electron-my-boilerplate",
+  "version": "1.0.0",
+  "description": "electron-my-boilerplate",
+  "main": "main.js",
+  "scripts": {
+    "start-debug": "electron . --trace-warnings > ./app-run.log  2>&1",
+    "start": "electron .",
+    "win": "electron-builder --win",
+    "win-test": "electron-builder --dir --win",
+    "linux-test": "electron-builder --dir --linux",
+    "linux": "electron-builder --linux",
+    "mac": "electron-builder --mac",
+    "publish": "electron-builder --win -p always",
+    "publish-linux": "electron-builder --linux -p always",
+    "postinstall": "electron-builder install-app-deps",
+    "release": "electron-builder",
+    "sass": "sass -w view/scss/main.scss view/css/main.min.css -s compressed"
+  },
+  "build": {
+    "productName": "Electron My Boilerplate",
+    "appId": "com.electron.my.boilerplate",
+    "win": {
+      "publish": [
+        "github"
+      ],
+      "publisherName": "Saulo INC",
+      "target": "NSIS"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "linux": {
+      "category": "Utilities",
+      "target": "AppImage",
+      "publish": [
+        "github"
+      ]
+    },
+    "mac": {
+      "target": {
+        "target": "dmg",
+        "arch": [
+          "universal"
+        ]
+      },
+      "publish": [
+        "github"
+      ]
+    }
+  },
+  "repository": "https://github.com/saulotarsobc/electron-my-boilerplate.git",
+  "author": "Saulo Costa <saulotarsobc@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^24.1.2",
+    "electron-builder": "^23.6.0",
+    "sass": "^1.62.1"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.9",
+    "@iconscout/unicons": "^4.0.8"
+  }
+}
