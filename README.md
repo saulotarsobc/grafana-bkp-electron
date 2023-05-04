@@ -2,9 +2,11 @@
 
 > Fazer backup e restore das dashboards do grafana
 
+![1683225981183](image/README/1683225981183.png)
+
 ## FIGMA
 
-[Grafana Bakup & Restore](https://www.figma.com/file/9AZDdvrRAdn1cvpTJYC87i/Grafana-Backup-%26-Restore?type=design&node-id=0%3A1&t=lcJXrPyAW99vR1ym-1)
+[Grafana Bakup &amp; Restore](https://www.figma.com/file/9AZDdvrRAdn1cvpTJYC87i/Grafana-Backup-%26-Restore?type=design&node-id=0%3A1&t=lcJXrPyAW99vR1ym-1)
 
 ## COMO USAR?
 

@@ -13,9 +13,49 @@
 
 <body>
 
-  <h1>Hello Word!</h1>
+  <div id="window_bar">
+    <div class="title">Grafana Backup & Restore - Saulo Costa</div>
+    <div id="window_btns">
+      <button class="window_btns" id="minimize"></button>
+      <button class="window_btns" id="maxmize"></button>
+      <button class="window_btns" id="close"></button>
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav_item active" data-target="tela1"><i for="nav_home" class="uil uil-estate"></i>HOME</div>
+    <div class="nav_item" data-target="tela2"><i class="uil uil-server"></i></i>SERVERS</div>
+    <div class="nav_item" data-target="tela3"><i class="uil uil-server"></i></i>Tela 3</div>
+    <div class="nav_item" data-target="tela4"><i class="uil uil-server"></i></i>Tela 4</div>
+
+    <div class="line"><!-- VIA JS --></div>
+  </nav>
+
+  <main id="contents">
+    <!-- tela1 -->
+    <div class="content active" id="tela1">
+      <h1>tela1</h1>
+    </div>
+
+    <!-- tela2 -->
+    <div class="content" id="tela2">
+      <h1>tela2</h1>
+    </div>
+    
+    <!-- tela3 -->
+    <div class="content" id="tela3">
+      <h1>Tela 3</h1>
+    </div>
+    
+    <!-- 4 -->
+    <div class="content" id="tela4">
+      <h1>Tela 4</h1>
+    </div>
+  </main>
 
   <script src="./js/index.js"></script>
+  <script src="./js/window_control.js"></script>
+  <script src="./js/nav_control.js"></script>
 </body>
 
 </html>

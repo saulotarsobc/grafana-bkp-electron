@@ -1,0 +1,51 @@
+#window_bar {
+    background-color: #333;
+    color: white;
+    height: 30px;
+    padding: 0 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    .title {
+        font-size: 12px;
+        width: 100%;
+        height: 100%;
+        -webkit-app-region: drag;
+        display: flex;
+        align-items: center;
+        cursor: grab;
+    }
+    
+    #window_btns {
+        height: 30px;
+        width: 100px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        
+        .window_btns {
+            cursor: pointer;
+            width: 100%;
+            border-radius: 50%;
+            border: none;
+
+            height: 21px;
+            width: 21px;
+        }
+
+        #minimize {
+            background-color: #FFEE51;
+        }
+
+        #maxmize {
+            background-color: #118DFF;
+        }
+
+        #close {
+            background-color: #FF5B5B;
+        }
+    }
+}

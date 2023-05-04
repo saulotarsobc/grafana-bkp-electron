@@ -1,9 +1,4 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}   
-
-body {
-    background-color: #fff;
-}
+@use "./reset.scss";
+@use "./scroll.scss";
+@use "./window_bar.scss";
+@use "./contents_and_nav.scss";

@@ -18,7 +18,7 @@
     "sass": "sass -w view/scss/main.scss view/css/main.min.css -s compressed"
   },
   "build": {
-    "productName": "Grafana Bakup & Restore - Saulo Costa",
+    "productName": "Grafana Bakup & Restore",
     "appId": "com.restore.backup.grafana",
     "win": {
       "publish": [
