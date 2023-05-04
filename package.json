@@ -1,7 +1,7 @@
 {
-  "name": "electron-my-boilerplate",
+  "name": "grafana-backup-restore",
   "version": "1.0.0",
-  "description": "electron-my-boilerplate",
+  "description": "Grafana Backup & Restore com electron",
   "main": "main.js",
   "scripts": {
     "start-debug": "electron . --trace-warnings > ./app-run.log  2>&1",
@@ -18,8 +18,8 @@
     "sass": "sass -w view/scss/main.scss view/css/main.min.css -s compressed"
   },
   "build": {
-    "productName": "Electron My Boilerplate",
-    "appId": "com.electron.my.boilerplate",
+    "productName": "Grafana Bakup & Restore - Saulo Costa",
+    "appId": "com.restore.backup.grafana",
     "win": {
       "publish": [
         "github"
