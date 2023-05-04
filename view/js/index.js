@@ -15,3 +15,9 @@ const guia = document.querySelectorAll('.guia');
 
 /* listeners */
 /* listeners */
+
+/* functions */
+const getDashBoards = async () => {
+    const data = await fetch();
+}
+/* functions */
