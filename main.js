@@ -8,9 +8,9 @@ remoteMain.initialize();
 const createWindow = () => {
     main = new BrowserWindow({
         width: 459,
-        maxWidth: 459,
+        // maxWidth: 459,
         minWidth: 459,
-        height: 564,
+        // height: 564,
         // maxHeight: 564,
         // minHeight: 564,
         // resizable: false,
@@ -24,8 +24,8 @@ const createWindow = () => {
     main.loadFile(path.join(__dirname, './view/index.html'));
     main.setTitle(`Grafana Backup & Restore`);
     remoteMain.enable(main.webContents);
-    // main.webContents.openDevTools();
-    // main.maximize();
+    main.webContents.openDevTools();
+    main.maximize();
 };
 
 /* app */

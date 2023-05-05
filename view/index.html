@@ -3,8 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"> -->
   <title></title>
   <link rel="stylesheet" href="./css/main.min.css" />
   <link rel="stylesheet" href="../node_modules/@iconscout/unicons/css/line.css">
@@ -23,39 +22,37 @@
   </div>
 
   <nav>
-    <div class="nav_item active" data-target="tela1"><i for="nav_home" class="uil uil-estate"></i>HOME</div>
-    <div class="nav_item" data-target="tela2"><i class="uil uil-server"></i></i>SERVERS</div>
-    <div class="nav_item" data-target="tela3"><i class="uil uil-server"></i></i>Tela 3</div>
-    <div class="nav_item" data-target="tela4"><i class="uil uil-server"></i></i>Tela 4</div>
-
-    <div class="line"><!-- VIA JS --></div>
+    <div class="nav_item active" data-target="servers"><i class="uil uil-servers"></i> SERVERS</div>
+    <div class="nav_item" data-target="dashs"><i class="uil uil-create-dashboard"></i> DASHBOARDS</div>
+    <div class="line"><!-- via js --></div>
   </nav>
 
   <main id="contents">
-    <!-- tela1 -->
-    <div class="content active" id="tela1">
-      <h1>tela1</h1>
+    <!-- tela2 SERVERS -->
+    <div class="content active" id="servers">
+      <h1 class="title"><i class="uil uil-play"></i> SERVERS</h1>
+      <hr>
+      <div id="server_list">
+        <!-- via js -->
+      </div>
     </div>
 
-    <!-- tela2 -->
-    <div class="content" id="tela2">
-      <h1>tela2</h1>
-    </div>
-    
-    <!-- tela3 -->
-    <div class="content" id="tela3">
-      <h1>Tela 3</h1>
-    </div>
-    
-    <!-- 4 -->
-    <div class="content" id="tela4">
-      <h1>Tela 4</h1>
+    <!-- tela2 DASHS -->
+    <div class="content" id="dashs">
+      <h1 class="title"><i class="uil uil-play"></i> DASHBOARDS</h1>
+      <h3> Server: <span id="server_selected">Nenhum servidor selecionado</span></h3>
+      <hr>
+      <div id="dashboards_list">
+        <!-- via js -->
+      </div>
     </div>
   </main>
 
-  <script src="./js/index.js"></script>
+  <script src="./js/libs.js"></script>
+  <script src="./js/database.js"></script>
   <script src="./js/window_control.js"></script>
   <script src="./js/nav_control.js"></script>
+  <script src="./js/grafana.js"></script>
 </body>
 
 </html>

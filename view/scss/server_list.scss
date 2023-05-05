@@ -1,0 +1,30 @@
+#server_list {
+    .server {
+        display: flex;
+
+        .server_props {
+            padding: 3px 10px;
+            border-bottom: 1px solid gray;
+        }
+
+        .server_id {
+            width: 80px;
+            border-right: 1px solid gray;
+            // background-color: rebeccapurple;
+            text-align: center;
+        }
+        
+        .server_name_btn {
+            width: 70px;
+            border-right: 1px solid gray;
+            button{
+                width: 50px;
+                cursor: pointer;
+            }
+        }
+
+        .server_name {
+            width: 100%;
+        }
+    }
+}
