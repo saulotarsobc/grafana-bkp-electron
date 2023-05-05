@@ -1,6 +1,6 @@
 const server_list = document.querySelector('#server_list');
 const server_selected = document.querySelector('#server_selected');
-
+const dashboards_list = document.querySelector('#dashboards_list');
 
 const getListServerOfDb = async () => {
     const servers = await Servers.findAll({ raw: true });
@@ -31,12 +31,10 @@ const getListServerOfDb = async () => {
 const getSearchByServer = async (id) => {
     const { address, token } = await Servers.findOne({ where: { id }, raw: true }).then(data => { return data });
 
-    const search = await getSearch(address, token);
+    const { id, uid, title, type, tags } = await getSearch(address, token);
 
-    console.log(search);
-    search.forEach(el => {
-        console.log(el)
-    });
+    console.log({ id, uid, title, type, tags });
+    dashboards_list.innerHTML = ``
 };
 
 const getSearch = async (address, token) => {
