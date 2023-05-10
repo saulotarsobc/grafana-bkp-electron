@@ -35,8 +35,8 @@ nav {
         transform: translateY(12px);
 
         /* inicial */
-        width: 91px;
-        left: 113px;
+        width: 96px;
+        left: 108px;
     }
 }
 
@@ -44,7 +44,8 @@ nav {
     padding: 0 5px;
 
     .content {
-        min-height: calc(100vh - 30px - 35px);
+        height: calc(100vh - 30px - 35px);
+        // max-height: 10vh;
         display: none;
         animation: moving .7s ease;
     }

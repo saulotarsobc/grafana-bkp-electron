@@ -16,7 +16,7 @@
     <div class="title">Grafana Backup & Restore - Saulo Costa</div>
     <div id="window_btns">
       <button class="window_btns" id="minimize"></button>
-      <button class="window_btns" id="maxmize"></button>
+      <!-- <button class="window_btns" id="maxmize"></button> -->
       <button class="window_btns" id="close"></button>
     </div>
   </div>
@@ -29,8 +29,8 @@
 
   <main id="contents">
     <!-- tela2 SERVERS -->
-    <div class="content active" id="servers">
-      <h1 class="title"><i class="uil uil-play"></i> SERVERS</h1>
+    <div class="content" id="servers">
+      <h1 class="title"><i class="uil uil-servers"></i> SERVERS</h1>
       <hr>
       <div id="server_list">
         <!-- via js -->
@@ -38,13 +38,42 @@
     </div>
 
     <!-- tela2 DASHS -->
-    <div class="content" id="dashs">
-      <h1 class="title"><i class="uil uil-play"></i> DASHBOARDS</h1>
+    <div class="content active" id="dashs">
+      <h1 class="title"><i class="uil uil-create-dashboard"></i> DASHBOARDS</h1>
       <h3> Server: <span id="server_selected">Nenhum servidor selecionado</span></h3>
       <hr>
+
+      <div id="dashboards_list_header">
+        <div class="select_download_wrap">
+          <i class="uil uil-check-circle"></i>
+        </div>
+        <div class="title">Título</div>
+        <div class="status">Status</div>
+      </div>
+
       <div id="dashboards_list">
         <!-- via js -->
+        <!-- <div class="dash">
+              <div class="select_download_wrap">
+                <input data-title="${title}" data-uid="${uid}" data-type="${type}" class="select_download" type="checkbox" name="${uid}" id="${uid}" />
+              </div>
+              <div class="title">
+                ${title}
+              </div>
+              <div class="status">
+                baixado
+              </div>
+            </div> -->
+        <!-- via js -->
       </div>
+
+      <div id="dash_control">
+        <button id="selectAllDashs">Marcar todas</button>
+        <button id="unselectAllDashs">Desmarcar todas</button>
+        <button id="getDashSelected">Baixar selecionadas</button>
+        <button id="saveDashDownloaded">Salvar Dashs Baixadas</button>
+      </div>
+
     </div>
   </main>
 

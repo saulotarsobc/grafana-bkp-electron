@@ -1,31 +1,35 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
-const remoteMain = require("@electron/remote/main")
+const remoteMain = require("@electron/remote/main");
+const { writeFileSync } = require('fs');
 
 let main;
 remoteMain.initialize();
 
 const createWindow = () => {
     main = new BrowserWindow({
-        width: 459,
+        // width: 459,
         // maxWidth: 459,
-        minWidth: 459,
+        // minWidth: 459,
+
         // height: 564,
         // maxHeight: 564,
         // minHeight: 564,
+
         // resizable: false,
         frame: false,
         autoHideMenuBar: true,
+
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
         },
     });
     main.loadFile(path.join(__dirname, './view/index.html'));
-    main.setTitle(`Grafana Backup & Restore`);
+    main.setTitle(`Grafana Backup & Restore - Saulo Costa`);
     remoteMain.enable(main.webContents);
     main.webContents.openDevTools();
-    main.maximize();
+    // main.maximize();
 };
 
 /* app */
@@ -41,3 +45,22 @@ ipcMain.on('wc', (e, a) => {
         case 2: app.quit(); break;
     }
 });
+
+ipcMain.on('DASHS_DOWNLOADED', (e, DASHS_DOWNLOADED) => {
+
+    dialog.showOpenDialog(null, {
+        properties: ['openDirectory']
+    }).then(result => {
+        if (!result.canceled) {
+            DASHS_DOWNLOADED.map(({ title, dashboard }) => {
+                const pathAndFileName = path.resolve(result.filePaths[0], `${title}.json`)
+                // console.log(dashboard);
+                writeFileSync(pathAndFileName, JSON.stringify(dashboard));
+            });
+        }
+    }).catch(err => {
+        console.log(err);
+    });
+
+
+})
