@@ -50,7 +50,7 @@
       ]
     }
   },
-  "repository": "https://github.com/saulotarsobc/electron-my-boilerplate.git",
+  "repository": "https://github.com/saulotarsobc/grafana-bkp-electron.git",
   "author": "Saulo Costa <saulotarsobc@gmail.com>",
   "license": "MIT",
   "devDependencies": {
