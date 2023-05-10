@@ -56,6 +56,7 @@ ipcMain.on('DASHS_DOWNLOADED', (e, DASHS_DOWNLOADED) => {
                 const pathAndFileName = path.resolve(result.filePaths[0], `${title}.json`)
                 writeFile(pathAndFileName, JSON.stringify(dashboard))
                     .then(() => {
+                        /* alert on success */
                         main.webContents.send('saveAnd', {
                             tipe: 'success',
                             title,
@@ -63,6 +64,7 @@ ipcMain.on('DASHS_DOWNLOADED', (e, DASHS_DOWNLOADED) => {
                         });
                     })
                     .catch(e => {
+                        /* alert on fail */
                         main.webContents.send('saveAnd', {
                             tipe: 'error',
                             message: e.message,
