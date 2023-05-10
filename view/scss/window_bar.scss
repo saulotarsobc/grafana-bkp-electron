@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
     .title {
         font-size: 12px;
         width: 100%;
@@ -17,15 +17,16 @@
         align-items: center;
         cursor: grab;
     }
-    
+
     #window_btns {
         height: 30px;
         width: 100px;
-        
+
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        
+        gap: 5px;
+        justify-content: end;
+
         .window_btns {
             cursor: pointer;
             width: 100%;

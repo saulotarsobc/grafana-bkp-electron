@@ -29,8 +29,10 @@
 
   <main id="contents">
     <!-- tela2 SERVERS -->
-    <div class="content" id="servers">
-      <h1 class="title"><i class="uil uil-servers"></i> SERVERS</h1>
+    <div class="content active" id="servers">
+      <h1 class="title">
+        <i class="uil uil-servers"></i> SERVERS
+      </h1>
       <hr>
       <div id="server_list">
         <!-- via js -->
@@ -38,17 +40,17 @@
     </div>
 
     <!-- tela2 DASHS -->
-    <div class="content active" id="dashs">
+    <div class="content" id="dashs">
       <h1 class="title"><i class="uil uil-create-dashboard"></i> DASHBOARDS</h1>
       <h3> Server: <span id="server_selected">Nenhum servidor selecionado</span></h3>
-      <hr>
+      <!-- <hr> -->
 
       <div id="dashboards_list_header">
         <div class="select_download_wrap">
           <i class="uil uil-check-circle"></i>
         </div>
         <div class="title">Título</div>
-        <div class="status">Status</div>
+        <div class="status-header">Status</div>
       </div>
 
       <div id="dashboards_list">
@@ -68,10 +70,18 @@
       </div>
 
       <div id="dash_control">
-        <button id="selectAllDashs">Marcar todas</button>
-        <button id="unselectAllDashs">Desmarcar todas</button>
-        <button id="getDashSelected">Baixar selecionadas</button>
-        <button id="saveDashDownloaded">Salvar Dashs Baixadas</button>
+        <button id="selectAllDashs">
+          <i class="uil uil-check-square"></i>
+        </button>
+        <button id="unselectAllDashs">
+          <i class="uil uil-square-full"></i>
+        </button>
+        <button id="getDashSelected">
+          <i class="uil uil-import"></i>
+        </button>
+        <button id="saveDashDownloaded">
+          <i class="uil uil-file-export"></i>
+        </button>
       </div>
 
     </div>

@@ -5,7 +5,6 @@
         border: 1px solid gray;
     }
 
-
     .select_download_wrap {
         width: 50px;
         text-align: center;
@@ -16,13 +15,13 @@
         padding: 0 10px;
     }
 
-    .status {
+    .status-header {
         width: 169px;
     }
 }
 
 #dashboards_list {
-    max-height: 60vh;
+    height: calc(100vh - 50px - 60px - 70px - 40px - 35px);
     overflow-y: scroll;
     border-bottom: 1px solid gray;
 
@@ -45,6 +44,26 @@
 
         .status {
             width: 150px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .not-downloaded {
+            background-color: #fff176;
+        }
+
+        .downloaded {
+            background-color: #76ff94;
+        }
+
+        .save-fail {
+            background-color: #ffa176;
+        }
+
+        .save-success {
+            background-color: #76b1ff;
         }
     }
 }
@@ -55,9 +74,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3px;
+    gap: 5px;
 
     button {
-        height: 30px;
+        color: #fff;
+        padding: 3px 20px;
+        font-size: 22px;
+        background-color: #333;
+        border: none;
+        border-radius: 5px;
     }
 }

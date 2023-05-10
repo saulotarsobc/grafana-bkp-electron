@@ -8,26 +8,83 @@ const saveDashDownloaded = document.querySelector('#saveDashDownloaded');
 
 /* server */
 let nameG, addressG, tokenG, dashsOfGrafana;
-let DASHS_DOWNLOADED = []
+let DASHS_DOWNLOADED = [];
 /* server */
+
+/* set status */
+function setNotDownloadedAll() {
+  document.querySelectorAll(`div.status`).forEach(el => {
+    el.innerHTML = "Não baixado";
+    el.classList.add("not-downloaded");
+    el.classList.remove("save-success");
+    el.classList.remove("save-fail");
+    el.classList.remove("downloaded");
+  });
+};
+function setDownloaded(uid) {
+  const el = document.querySelector(`div.status[data-uid="${uid}"]`);
+  el.innerHTML = "Baixado";
+  el.classList.add("downloaded");
+  el.classList.remove("save-success");
+  el.classList.remove("save-fail");
+  el.classList.remove("not-downloaded");
+};
+function setNotDownloaded(uid) {
+  const el = document.querySelector(`div.status[data-uid="${uid}"]`);
+  el.innerHTML = "Não baixado";
+  el.classList.add("not-downloaded");
+  el.classList.remove("save-success");
+  el.classList.remove("save-fail");
+  el.classList.remove("downloaded");
+}
+function setSaved(uid) {
+  const el = document.querySelector(`div.status[data-uid="${uid}"]`);
+  el.innerHTML = "Salvo";
+  el.classList.add("save-success");
+  el.classList.remove("save-fail");
+  el.classList.remove("not-downloaded");
+  el.classList.remove("downloaded");
+};
+function setNotSaved(uid) {
+  const el = document.querySelector(`div.status[data-uid="${uid}"]`);
+  el.innerHTML = "Não salvo";
+  el.classList.add("save-fail");
+  el.classList.remove("save-success");
+  el.classList.remove("not-downloaded");
+  el.classList.remove("downloaded");
+};
+/* set status */
 
 /* listeners */
 getDashSelected.addEventListener('click', () => {
+
   DASHS_DOWNLOADED = [];
+
+  setNotDownloadedAll();
+
   const dashsSelected = getSelectedDashs();
   dashsSelected.forEach(async ({ title, uid }) => {
     const { dashboard } = await getDashboardFetc(uid);
-    DASHS_DOWNLOADED.push({ title, dashboard });
+
+    if (dashboard) {
+      DASHS_DOWNLOADED.push({ title, dashboard });
+      setDownloaded(uid);
+    }
+    else {
+      setNotDownloaded(uid);
+    }
   });
-})
+});
 
 selectAllDashs.addEventListener('click', () => {
+  setNotDownloadedAll();
   document.querySelectorAll(".select_download").forEach((el) => {
     el.checked = true;
   });
-})
+});
 
 unselectAllDashs.addEventListener('click', () => {
+  setNotDownloadedAll();
   document.querySelectorAll(".select_download").forEach((el) => {
     el.checked = false;
   });
@@ -44,11 +101,14 @@ saveDashDownloaded.addEventListener('click', () => {
 
 ipcRenderer.on('saveAnd', (e, { success, title, dashboard, message, error }) => {
   if (success) {
-    console.log('Sucesso');
-  } else {
-    console.log('Falha');
+    setSaved(dashboard.uid);
+    console.log(message);
   }
-})
+  else {
+    setNotSaved(dashboard.uid);
+    console.log(message, error);
+  }
+});
 /* listeners */
 
 const getListServerOfDb = async () => {
@@ -95,12 +155,8 @@ const getSearchByServer = async (server_target) => {
               <div class="select_download_wrap">
                 <input data-title="${title}" data-uid="${uid}" data-type="${type}" class="select_download" type="checkbox" name="${uid}" id="${uid}" />
               </div>
-              <div class="title">
-                ${title}
-                <br>
-                ${uid}
-              </div>
-              <div class="status" data-uid="${uid}">Não baixado</div>
+              <div class="title">${title}</div>
+              <div class="status not-downloaded" data-uid="${uid}">Não baixado</div>
             </div>`;
       }
     });
@@ -127,12 +183,10 @@ const getDashboardFetc = async (uid) => {
 
 const getSelectedDashs = () => {
   let data = [];
-  document.querySelectorAll(".select_download:checked").forEach((el) => {
-    data.push(el.dataset);
-  });
+  document.querySelectorAll(".select_download:checked").forEach((el) => data.push(el.dataset));
   return data;
 };
 
 /* init */
-getSearchByServer(1);
+// getSearchByServer(1);
 getListServerOfDb();

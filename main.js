@@ -6,17 +6,19 @@ const { writeFile } = require('fs').promises;
 let main;
 remoteMain.initialize();
 
+const production = true;
+
 const createWindow = () => {
     main = new BrowserWindow({
-        width: 459,
-        // maxWidth: 459
-        // minWidth: 459,
+        width: 600,
+        maxWidth: production ? 600 : "",
+        minWidth: production ? 600 : "",
 
-        // height: 564,
-        // maxHeight: 564,
-        // minHeight: 564,
+        height: production ? 600 : "",
+        maxHeight: production ? 600 : "",
+        minHeight: production ? 600 : "",
 
-        // resizable: false,
+        resizable: production ? false : "",
         frame: false,
         autoHideMenuBar: true,
 
@@ -28,8 +30,8 @@ const createWindow = () => {
     main.loadFile(path.join(__dirname, './view/index.html'));
     main.setTitle(`Grafana Backup & Restore - Saulo Costa`);
     remoteMain.enable(main.webContents);
-    main.webContents.openDevTools();
-    main.maximize();
+    production ? "" : main.webContents.openDevTools();
+    production ? "" : main.maximize();
 };
 
 /* app */
@@ -54,7 +56,7 @@ ipcMain.on('DASHS_DOWNLOADED', (e, DASHS_DOWNLOADED) => {
         if (!result.canceled) {
             DASHS_DOWNLOADED.map(({ title, dashboard }) => {
                 const pathAndFileName = path.resolve(result.filePaths[0], `${title}.json`)
-                writeFile(pathAndFileName, dashboard)
+                writeFile(pathAndFileName, JSON.stringify(dashboard))
                     .then(() => {
                         /* alert on success */
                         main.webContents.send('saveAnd', {
@@ -80,6 +82,4 @@ ipcMain.on('DASHS_DOWNLOADED', (e, DASHS_DOWNLOADED) => {
     }).catch(err => {
         console.log(err);
     });
-
-
-})
+});

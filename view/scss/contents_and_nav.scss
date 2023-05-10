@@ -36,7 +36,7 @@ nav {
 
         /* inicial */
         width: 96px;
-        left: 108px;
+        left: 180px;
     }
 }
 
@@ -48,6 +48,14 @@ nav {
         // max-height: 10vh;
         display: none;
         animation: moving .7s ease;
+
+
+        >.title {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            color: #333;
+        }
     }
 
     @keyframes moving {
