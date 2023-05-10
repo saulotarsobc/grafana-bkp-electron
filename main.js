@@ -54,7 +54,7 @@ ipcMain.on('DASHS_DOWNLOADED', (e, DASHS_DOWNLOADED) => {
         if (!result.canceled) {
             DASHS_DOWNLOADED.map(({ title, dashboard }) => {
                 const pathAndFileName = path.resolve(result.filePaths[0], `${title}.json`)
-                writeFile(pathAndFileName, JSON.stringify(dashboard))
+                writeFile(pathAndFileName, dashboard)
                     .then(() => {
                         /* alert on success */
                         main.webContents.send('saveAnd', {
