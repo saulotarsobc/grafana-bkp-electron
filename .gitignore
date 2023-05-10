@@ -1,3 +1,5 @@
 /node_modules
 .env
 /dist
+yarn-error.log
+yarn.l0ck

@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Grafana Backup & Restore com electron",
   "main": "main.js",
+  "repository": "https://github.com/saulotarsobc/grafana-bkp-electron.git",
+  "author": "Saulo Costa <saulotarsobc@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "start-debug": "electron . --trace-warnings > ./app-run.log  2>&1",
     "start": "electron .",
@@ -50,9 +53,6 @@
       ]
     }
   },
-  "repository": "https://github.com/saulotarsobc/grafana-bkp-electron.git",
-  "author": "Saulo Costa <saulotarsobc@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
     "electron": "^24.1.2",
     "electron-builder": "^23.6.0",
