@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 const remoteMain = require("@electron/remote/main");
-const { writeFileSync } = require('fs');
+const { writeFile } = require('fs').promises;
 
 let main;
 remoteMain.initialize();
@@ -9,8 +9,8 @@ remoteMain.initialize();
 const createWindow = () => {
     main = new BrowserWindow({
         width: 459,
-        maxWidth: 459,
-        minWidth: 459,
+        // maxWidth: 459
+        // minWidth: 459,
 
         // height: 564,
         // maxHeight: 564,
@@ -28,8 +28,8 @@ const createWindow = () => {
     main.loadFile(path.join(__dirname, './view/index.html'));
     main.setTitle(`Grafana Backup & Restore - Saulo Costa`);
     remoteMain.enable(main.webContents);
-    // main.webContents.openDevTools();
-    // main.maximize();
+    main.webContents.openDevTools();
+    main.maximize();
 };
 
 /* app */
@@ -54,8 +54,20 @@ ipcMain.on('DASHS_DOWNLOADED', (e, DASHS_DOWNLOADED) => {
         if (!result.canceled) {
             DASHS_DOWNLOADED.map(({ title, dashboard }) => {
                 const pathAndFileName = path.resolve(result.filePaths[0], `${title}.json`)
-                // console.log(dashboard);
-                writeFileSync(pathAndFileName, JSON.stringify(dashboard));
+                writeFile(pathAndFileName, JSON.stringify(dashboard))
+                    .then(() => {
+                        main.webContents.send('saveAnd', {
+                            tipe: 'success',
+                            title,
+                            dashboard
+                        });
+                    })
+                    .catch(e => {
+                        main.webContents.send('saveAnd', {
+                            tipe: 'error',
+                            message: e.message,
+                        });
+                    })
             });
         }
     }).catch(err => {

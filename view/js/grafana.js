@@ -31,7 +31,7 @@ unselectAllDashs.addEventListener('click', () => {
   document.querySelectorAll(".select_download").forEach((el) => {
     el.checked = false;
   });
-})
+});
 
 saveDashDownloaded.addEventListener('click', () => {
   if (DASHS_DOWNLOADED.length < 1) {
@@ -41,6 +41,10 @@ saveDashDownloaded.addEventListener('click', () => {
     console.log(DASHS_DOWNLOADED);
   }
 });
+
+ipcRenderer.on('saveAnd', (e, args) => {
+  console.log(args);
+})
 /* listeners */
 
 const getListServerOfDb = async () => {
