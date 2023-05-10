@@ -8,9 +8,9 @@ remoteMain.initialize();
 
 const createWindow = () => {
     main = new BrowserWindow({
-        // width: 459,
-        // maxWidth: 459,
-        // minWidth: 459,
+        width: 459,
+        maxWidth: 459,
+        minWidth: 459,
 
         // height: 564,
         // maxHeight: 564,
@@ -28,7 +28,7 @@ const createWindow = () => {
     main.loadFile(path.join(__dirname, './view/index.html'));
     main.setTitle(`Grafana Backup & Restore - Saulo Costa`);
     remoteMain.enable(main.webContents);
-    main.webContents.openDevTools();
+    // main.webContents.openDevTools();
     // main.maximize();
 };
 
