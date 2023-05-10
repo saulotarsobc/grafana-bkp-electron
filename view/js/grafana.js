@@ -42,8 +42,12 @@ saveDashDownloaded.addEventListener('click', () => {
   }
 });
 
-ipcRenderer.on('saveAnd', (e, args) => {
-  console.log(args);
+ipcRenderer.on('saveAnd', (e, { success, title, dashboard, message, error }) => {
+  if (success) {
+    console.log('Sucesso');
+  } else {
+    console.log('Falha');
+  }
 })
 /* listeners */
 
@@ -93,8 +97,10 @@ const getSearchByServer = async (server_target) => {
               </div>
               <div class="title">
                 ${title}
+                <br>
+                ${uid}
               </div>
-              <div class="status"></div>
+              <div class="status" data-uid="${uid}">Não baixado</div>
             </div>`;
       }
     });

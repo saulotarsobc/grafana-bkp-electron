@@ -58,16 +58,21 @@ ipcMain.on('DASHS_DOWNLOADED', (e, DASHS_DOWNLOADED) => {
                     .then(() => {
                         /* alert on success */
                         main.webContents.send('saveAnd', {
-                            tipe: 'success',
+                            success: true,
                             title,
-                            dashboard
+                            dashboard,
+                            message: "Baixado",
+                            error: "",
                         });
                     })
                     .catch(e => {
                         /* alert on fail */
                         main.webContents.send('saveAnd', {
-                            tipe: 'error',
-                            message: e.message,
+                            success: false,
+                            title,
+                            dashboard,
+                            message: "Falha!",
+                            error: e.message,
                         });
                     })
             });
