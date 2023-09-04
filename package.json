@@ -54,14 +54,14 @@
     }
   },
   "devDependencies": {
-    "electron": "^24.1.2",
+    "electron": "^24.3.0",
     "electron-builder": "^23.6.0",
     "sass": "^1.62.1"
   },
   "dependencies": {
     "@electron/remote": "^2.0.9",
     "@iconscout/unicons": "^4.0.8",
-    "sequelize": "^6.31.0",
+    "sequelize": "^6.31.1",
     "sqlite3": "^5.1.6"
   }
 }
